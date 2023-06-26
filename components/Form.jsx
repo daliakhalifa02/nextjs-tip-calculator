@@ -5,7 +5,7 @@ const Form = ({state, updateValues}) => {
     const percentages = [5, 10, 15, 25, 50];
     const totalTip = Number((state.billAmount * tipPercentage) / 100).toFixed(2);
     const tipPerPerson = Number(totalTip/nbOfPeople).toFixed(2);
-    const totalPerPerson = (billAmount/nbOfPeople) +tipPerPerson;
+    const totalPerPerson = (parseInt(billAmount)/parseInt(nbOfPeople)) +parseInt(tipPerPerson);
     return (
         <main>
         <img
@@ -48,6 +48,7 @@ const Form = ({state, updateValues}) => {
                                     updateValues({tipPercentage : p})
                                 }}
                             >
+                                {p}%
                             </button>
                             )
                         })}
