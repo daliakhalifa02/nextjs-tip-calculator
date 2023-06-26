@@ -41,15 +41,15 @@ const Form = ({state, updateValues}) => {
                             valid</small>
                     </div>
                     <div className="input-tips-container">
-                        {percentages.map((p)=>{
+                        {percentages.map((p, index)=>{
                             return(
-                                <button className="body-l-text input-tip" id="tip5"
+                                <button key={index} className="body-l-text input-tip" id="tip5"
                                 onClick={() => {
                                     updateValues({tipPercentage : p})
                                 }}
                             >
                                 {p}%
-                            </button>
+                                </button>
                             )
                         })}
                         <input 
