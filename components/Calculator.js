@@ -3,12 +3,14 @@ import Form from './Form';
 
 const Calculator = () => {
     const [state, setState] = useState({
-        billAmount: 0,
-        tipPercentage: 0,
-        nbOfPeople: 0,
+        totalPerPerson : 0,
+        nbOfPeople : 0,
+        billAmount : 0,
+        tipPerPerson : 0
     });
     
     const updateValues = (newState) => {
+        console.log('Updating state with:', newState);
         setState({
             ...state,
             ...newState,

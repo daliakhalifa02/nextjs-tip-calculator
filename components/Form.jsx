@@ -6,6 +6,7 @@ const Form = ({state, updateValues}) => {
     const totalTip = Number((state.billAmount * tipPercentage) / 100).toFixed(2);
     const tipPerPerson = Number(totalTip/nbOfPeople).toFixed(2);
     const totalPerPerson = (parseInt(billAmount)/parseInt(nbOfPeople)) +parseInt(tipPerPerson);
+    
     return (
         <main>
         <img
@@ -41,9 +42,9 @@ const Form = ({state, updateValues}) => {
                             valid</small>
                     </div>
                     <div className="input-tips-container">
-                        {percentages.map((p, index)=>{
+                        {percentages.map((p)=>{
                             return(
-                                <button key={index} className="body-l-text input-tip" id="tip5"
+                                <button className="body-l-text input-tip" id="tip5"
                                 onClick={() => {
                                     updateValues({tipPercentage : p})
                                 }}
@@ -108,7 +109,17 @@ const Form = ({state, updateValues}) => {
                 </div>
                 <strong type="number" className="strong-text card-price-value" id="totalPrice">${Number((totalPerPerson)).toFixed(2)}</strong>
             </section>
-            <button className="btn btn-primary btn-reset">Reset</button>
+            <button 
+                className="btn btn-primary btn-reset"
+                onClick={() => {
+                    updateValues({
+                        totalPerPerson : 0,
+                        nbOfPeople : 0,
+                        billAmount : 0,
+                        tipPerPerson : 0
+                    })
+                }}
+            >Reset</button>
         </div>
         </section>
     </main>
