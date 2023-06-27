@@ -16,6 +16,7 @@ const Calculator = () => {
             ...newState,
         })
     }
+    
     return (
        <div>
             <Form state={state} updateValues={updateValues} />
