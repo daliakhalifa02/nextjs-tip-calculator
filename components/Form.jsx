@@ -3,9 +3,9 @@ import React from "react";
 const Form = ({state, updateValues}) => {
     const {billAmount, tipPercentage, nbOfPeople} = state;
     const percentages = [5, 10, 15, 25, 50];
-    const totalTip = Number((state.billAmount * tipPercentage) / 100).toFixed(2);
-    const tipPerPerson = Number(totalTip/nbOfPeople).toFixed(2);
-    const totalPerPerson = (parseInt(billAmount)/parseInt(nbOfPeople)) +parseInt(tipPerPerson);
+    const totalTip = Number((state.billAmount * tipPercentage) / 100);
+    const tipPerPerson = nbOfPeople ? (totalTip / nbOfPeople).toFixed(2) : 0;
+    const totalPerPerson = nbOfPeople ? (parseFloat(billAmount) / parseFloat(nbOfPeople) + parseFloat(tipPerPerson)).toFixed(2) : 0;
     
     return (
         <main>
@@ -116,8 +116,13 @@ const Form = ({state, updateValues}) => {
                                 totalPerPerson : 0,
                                 nbOfPeople : 0,
                                 billAmount : 0,
-                                tipPerPerson : 0
+                                tipPerPerson : 0,
+                                tipPercentage :0
                             })
+                            const inputFields = document.querySelectorAll('input[type="number"]');
+                            inputFields.forEach(input => {
+                                input.value = 0;
+                            });
                         }}
                     >Reset</button>
                 </div>
