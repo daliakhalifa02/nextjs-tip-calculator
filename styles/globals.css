@@ -242,7 +242,7 @@ input {
 .card-right {
     background-color: var(--dark-cyan);
     border-radius: 15px;
-    max-width: 415px;
+    min-width: 415px;
     padding: 40px;
     flex-grow: 1;
     width: 100%;
